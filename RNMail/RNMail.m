@@ -28,6 +28,13 @@
 
 RCT_EXPORT_MODULE()
 
+RCT_REMAP_METHOD(isMailerAvailable,
+                 resolver: (RCTPromiseResolveBlock)resolve
+                 rejecter: (RCTPromiseRejectBlock)reject)
+{
+    resolve([MFMailComposeViewController canSendMail]);
+}
+
 RCT_EXPORT_METHOD(mail:(NSDictionary *)options
                   callback: (RCTResponseSenderBlock)callback)
 {
